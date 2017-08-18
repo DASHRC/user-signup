@@ -1,6 +1,69 @@
 <!DOCTYPE html>
 <html>
     <head>
+            <link href="https://fonts.googleapis.com/css?family=Zilla+Slab+Highlight" rel="stylesheet">
+            <style>
+                
+                    #snackbar {
+                        visibility: hidden;
+                        min-width: 250px;
+                        margin-left: -125px;
+                        background-color: #333;
+                        color: #fff;
+                        text-align: center;
+                        border-radius: 2px;
+                        padding: 16px;
+                        position: fixed;
+                        z-index: 1;
+                        left: 50%;
+                        bottom: 30px;
+                        font-size: 17px;
+                    }
+                    
+                    #snackbar.show {
+                        visibility: visible;
+                        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+                        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+                    }
+                    
+                    @-webkit-keyframes fadein {
+                        from {bottom: 0; opacity: 0;} 
+                        to {bottom: 30px; opacity: 1;}
+                    }
+                    
+                    @keyframes fadein {
+                        from {bottom: 0; opacity: 0;}
+                        to {bottom: 30px; opacity: 1;}
+                    }
+                    
+                    @-webkit-keyframes fadeout {
+                        from {bottom: 30px; opacity: 1;} 
+                        to {bottom: 0; opacity: 0;}
+                    }
+                    
+                    @keyframes fadeout {
+                        from {bottom: 30px; opacity: 1;}
+                        to {bottom: 0; opacity: 0;}
+                    }
+        
+                     h1   {  font-family: 'Zilla Slab Highlight', cursive;
+                     font-size: 80px;
+                     font-weight: 1000;
+                     line-height: 46px;
+                     margin: 60px 20px 20px 20px;
+                     text-align: center;
+                     text-shadow: 0px 2px 4px rgba(55, 75, 105, 0.65);
+                     width: 100%;}
+
+                     table  {  font-family: 'Zilla Slab Highlight', cursive;
+                     font-size: 30px;
+                     font-weight: 1000;
+                     line-height: 46px;
+                     /* margin: 60px 20px 20px 20px; */
+                     /* text-align: center; */
+                     text-shadow: 0px 2px 4px rgba(55, 75, 105, 0.65);
+                     /* width: 100%;} */}
+                    </style>
         <title>Signup</title>
         <style>
             .error {
@@ -27,14 +90,14 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="verify">Verify Password</label></td>
+                    <td><label for="verify">Password [verify]</label></td>
                     <td>
                         <input name="verify" type="password">
                         <span class="error">{{verify_error}}</span>
                     </td>
                 </tr>
                 <tr>
-                    <td><label for="email">Email (optional)</label></td>
+                    <td><label for="email">Email [optional]</label></td>
                     <td>
                         <input name="email" type="text" value="{{email_address}}">
                         <span class="error">{{email_error}}</span>
@@ -43,5 +106,16 @@
             </table>
             <input type="submit">
         </form>
+        <button onclick="myFunction()">Help</button>
+        
+        <div id="snackbar">Just fill out the form.</div>
+        
+        <script>
+        function myFunction() {
+            var x = document.getElementById("snackbar")
+            x.className = "show";
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+        }
+        </script>
     </body>
 </html>

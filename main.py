@@ -1,4 +1,5 @@
-from flask import Flask, request, render_template, redirect
+from flask import Flask, request, render_template
+# redirect
 #HASH? 
 
 # from models import db
@@ -22,7 +23,6 @@ def index():
 
         if username == "": #username val
             u_message_error = "error! Please do not leave it blank"
-            redirect
         elif username.isspace():
             u_message_error = "error! Please do not leave it blank"  
         elif len(username) < 6 and username != "":
